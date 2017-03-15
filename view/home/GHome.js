@@ -10,9 +10,19 @@ import {
     StyleSheet,
     Text,
     View,
-    TouchableOpacity
+    TextInput,
+    Image,
+    TouchableOpacity,
+    Platform,
+    ScrollView
 } from 'react-native';
 var HomeDetail=require('./HomeDetail');
+var Dimensions=require('Dimensions');
+var {width}=Dimensions.get('window');
+var GHomeNavBarView=require('./GHomeNavBarView');
+var GHomeTopView=require('./GHomeTopView');
+var GHomeMiddleView=require('./GHomeMiddleView');
+
 
 var GHome=React.createClass({
     pushToDetail(){
@@ -21,15 +31,14 @@ var GHome=React.createClass({
             title:'详情界面'
         });
     },
-    render() {
+     render() {
         return (
             <View style={styles.container}>
-                <TouchableOpacity onPress={()=>this.pushToDetail()}>
-                    <Text style={styles.instructions}>
-                        首页
-                    </Text>
-                </TouchableOpacity>
-
+               <GHomeNavBarView></GHomeNavBarView>
+                <ScrollView>
+                    <GHomeTopView></GHomeTopView>
+                    <GHomeMiddleView ></GHomeMiddleView>
+                </ScrollView>
             </View>
         );
     }
@@ -37,20 +46,9 @@ var GHome=React.createClass({
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#F5FCFF',
+        backgroundColor: '#e8e8e8',
+    },
 
-    },
-    welcome: {
-        fontSize: 20,
-        textAlign: 'center',
-        margin: 10,
-    },
-    instructions: {
-        textAlign: 'center',
-        color: '#333333',
-        marginBottom: 5,
-    },
+
 });
 module.exports=GHome;
