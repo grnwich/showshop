@@ -23,7 +23,9 @@ var GTopListView=React.createClass({
         }
     },
     getInitialState(){
-        const ds=new ListView.DataSource({rowHasChanged:(row1,row2)=>row1!==row2});
+        const ds=new ListView.DataSource({rowHasChanged:function (row1,row2) {
+            return row1!==row2;
+        }});
         return {
             dataSource:ds.cloneWithRows(this.props.dataArr)
         }

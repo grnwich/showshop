@@ -20,21 +20,31 @@ var GHomeMiddleView=React.createClass({
     render() {
         return (
             <View style={styles.container}>
-                <View style={styles.containerRightStyle}>
-                    <Image source={{uri:MiddleData.dataLeft.img1}} style={styles.image1Style}></Image>
-                    <Image source={{uri:MiddleData.dataLeft.img2}} style={styles.image1Style}></Image>
-                    <Text>{MiddleData.dataLeft.title}</Text>
-                    <View style={styles.priceStyle}>
-                        <Text>{MiddleData.dataLeft.price}</Text>
-                        <Text>{MiddleData.dataLeft.sale}</Text>
-                    </View>
-                </View>
-                <View>
+                {this.rnderMiddleLeft()}
+                <View style={{borderBottomWidth:1,borderColor:'#dfdfdf'}}>
                     {this.renderMiddleRight()}
                 </View>
             </View>
 
         );
+    },
+    rnderMiddleLeft(){
+        var leftView=[];
+        for(let i=0;i<MiddleData.dataLeft.length;i++){
+            let itemData=MiddleData.dataLeft[i];
+            leftView.push(
+                <View key={i} style={styles.containerLeftStyle}>
+                    <Image source={{uri:itemData.img1}} style={styles.image1Style}></Image>
+                    <Image source={{uri:itemData.img2}} style={styles.image1Style}></Image>
+                    <Text style={styles.leftTitleStyle}>{itemData.title}</Text>
+                    <View style={styles.priceStyle}>
+                        <Text style={styles.leftPriceStyle}>{itemData.price}</Text>
+                        <Text style={styles.leftSellStyle}>{itemData.sale}</Text>
+                    </View>
+                </View>
+            );
+        }
+        return leftView;
     },
     renderMiddleRight(){
         var rightView=[];
@@ -44,6 +54,7 @@ var GHomeMiddleView=React.createClass({
                 <GHomeCenterCellView key={i}
                     title={ItemData.title}
                     titleColor={ItemData.titleColor}
+                                     secondTitleColor={'gray'}
                     secondTitle={ItemData.subTitle}
                     iconImage={ItemData.rightImage}
                 ></GHomeCenterCellView>
@@ -65,24 +76,48 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         marginTop:10,
         borderColor:'#dfdfdf',
-        borderWidth:0.5,
         flexDirection:'row',
 
+
 },
-    containerRightStyle:{
-        width:(width/2)-1,
+    leftTitleStyle:{
+        color:'gray',
+        fontSize:13,
+        marginTop:6
+    },
+    leftPriceStyle:{
+        color:'green',
+        fontSize:12
+    },
+    leftSellStyle:{
+        color:'red',
+        fontSize:12,
+        backgroundColor:'yellow'
+    },
+    containerLeftStyle:{
+        width:(width/2),
+        height:111,
+        alignItems:'center',
+        borderColor:'#dfdfdf',
+        borderTopWidth:1,
+        borderBottomWidth:1
+
+
     },
     image1Style:{
-        width:40,
-        height:20
+        width:70,
+        height:20,
+        marginTop:10
 
     },
     image2Style:{
-        width:40,
-        height:20
+        width:70,
+        height:30,
+        marginTop:7
     },
     priceStyle:{
-        flexDirection:'row'
+        flexDirection:'row',
+        marginTop:7
     },
     welcome: {
         fontSize: 20,

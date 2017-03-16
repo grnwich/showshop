@@ -22,6 +22,7 @@ var {width}=Dimensions.get('window');
 var GHomeNavBarView=require('./GHomeNavBarView');
 var GHomeTopView=require('./GHomeTopView');
 var GHomeMiddleView=require('./GHomeMiddleView');
+var GHomeShopCenterView=require('./GHomeShopCenterView');
 
 
 var GHome=React.createClass({
@@ -38,6 +39,7 @@ var GHome=React.createClass({
                 <ScrollView>
                     <GHomeTopView></GHomeTopView>
                     <GHomeMiddleView ></GHomeMiddleView>
+                    <GHomeShopCenterView></GHomeShopCenterView>
                 </ScrollView>
             </View>
         );

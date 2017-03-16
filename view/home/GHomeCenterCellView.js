@@ -28,10 +28,10 @@ var GHomeCenterCellView=React.createClass({
         return (
             <View style={styles.container}>
                 <View style={styles.textContentStyle}>
-                    <Text style={styles.textTitleStyle}>
+                    <Text style={[styles.textTitleStyle,{color:this.props.titleColor}]}>
                         {this.props.title}
                     </Text>
-                    <Text style={styles.textSecondTitleStyle}>
+                    <Text style={[{color:this.props.secondTitleColor},styles.textSubTitleStyle]}>
                         {this.props.secondTitle}
                     </Text>
                 </View>
@@ -46,14 +46,23 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: 'white',
         width:(width/2)-1,
-        flexDirection:'row'
+        flexDirection:'row',
+        height:55,
+        borderColor:'#dfdfdf',
+        alignItems:'center',
+        borderTopWidth:1,
+        borderLeftWidth:1
 
     },
     textTitleStyle:{
-        // color:this.props.titleColor,
+        // ,
+        marginLeft:10,
+        fontSize:15
     },
-    textSecondTitleStyle:{
-        // color:this.props.secondTitleColor,
+    textSubTitleStyle:{
+        marginLeft:10,
+        fontSize:13,
+        marginTop:5
     },
     textContentStyle:{
 
@@ -72,7 +81,7 @@ const styles = StyleSheet.create({
         width:60,
         height:30,
         position:'absolute',
-        right:10
+        right:5
     }
 });
 module.exports=GHomeCenterCellView;
